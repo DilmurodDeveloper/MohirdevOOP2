@@ -1,86 +1,60 @@
-﻿public class Car
+namespace MohirdevOOP2
 {
-    private string model;
-    private int year;   
-    private decimal price;
-    private decimal speed;
-
-    public Car(string model, int year, decimal price, decimal speed)
+    public class Car
     {
-        this.model = model;
-        this.year = year;
-        this.price = price;
-        this.speed = speed;
-    }
+        private string model;
+        private int year;   
+        private decimal price;
+        private decimal speed;
 
-    public string Model
-    {
-        get { return Model; }
-        set { Model = value; }
-    }
-
-    public int Year
-    {
-        get { return year; }
-        set { year = value; }
-    }
-
-    public decimal Price
-    {
-        get { return price; }
-        set { price = value; }
-    }
-
-    public decimal Speed
-    {
-        get { return speed; }
-        set { speed = value; }
-    }
-
-    public string GetCarInfo()
-    {
-        return $"\nModeli: {model} \nYili: {year}-yil \nNarxi: {price} $ \nTezligi: {speed} km/soat";
-    }
-
-    public decimal CalculateDepreciation(int years)
-    {
-        decimal yillikKamayish = 0.10m;
-        decimal joriyQiymat = price;
-
-        for (int i = 0; i < years; i++)
+        public Car(string model, int year, decimal price, decimal speed)
         {
-            joriyQiymat -= joriyQiymat * yillikKamayish;
+            this.model = model;
+            this.year = year;
+            this.price = price;
+            this.speed = speed;
         }
 
-        return joriyQiymat;
-    }
-}
+        public string Model
+        {
+            get { return Model; }
+            set { Model = value; }
+        }
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Mashina modelini kiriting:");
-        string model = Console.ReadLine();
+        public int Year
+        {
+            get { return year; }
+            set { year = value; }
+        }
 
-        Console.WriteLine("Mashina yilini kiriting:");
-        int year = int.Parse(Console.ReadLine());  
+        public decimal Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
 
-        Console.WriteLine("Mashina narxini kiriting ($):");
-        decimal price = decimal.Parse(Console.ReadLine()); 
+        public decimal Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
 
-        Console.WriteLine("Mashina tezligini kiriting (km/soat):");
-        decimal speed = decimal.Parse(Console.ReadLine());
+        public string GetCarInfo()
+        {
+            return $"\nModeli: {model} \nYili: {year}-yil \nNarxi: {price} $ \nTezligi: {speed} km/soat";
+        }
 
-        Car myCar = new Car(model, year, price, speed);
+        public decimal CalculateDepreciation(int years)
+        {
+            decimal yillikKamayish = 0.10m;
+            decimal joriyQiymat = price;
 
-        Console.WriteLine("\nKiritilgan mashina haqida ma'lumotlar:");
-        Console.WriteLine(myCar.GetCarInfo());
+            for (int i = 0; i < years; i++)
+            {
+                joriyQiymat -= joriyQiymat * yillikKamayish;
+            }
 
-        Console.WriteLine("\nMashinaning qiymatini hisoblash uchun yillar sonini kiriting:");
-        int years = int.Parse(Console.ReadLine());  
-
-        decimal newPrice = myCar.CalculateDepreciation(years);
-        Console.WriteLine($"{years} yildan keyin mashinaning narxi quyidagicha bo'ladi: ${newPrice}");
+            return joriyQiymat;
+        }
     }
 }
